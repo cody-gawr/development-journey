@@ -1,7 +1,3 @@
-Got it — you're targeting **senior-level Angular development** with best practices, scalability, and efficiency in mind. Here’s a carefully curated list of **VSCode extensions** to maximize your Angular workflow:
-
----
-
 ### 🔥 Core Angular Essentials
 
 - **Angular Language Service** (`Angular.ng-template`)

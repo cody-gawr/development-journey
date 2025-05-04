@@ -1,9 +1,3 @@
-Absolutely! As a **professional Angular developer**, following a clear and standardized **Git commit message convention** is essential — especially when working on large teams or using tools like **Semantic Release**, **Conventional Changelog**, or **commitlint**.
-
-Angular projects typically follow the **Conventional Commits** format, which is well-structured and widely used.
-
----
-
 ## ✅ Step-by-Step Guide: Angular Git Commit Message Convention
 
 ---
@@ -231,7 +225,3 @@ Then set it globally:
 ```bash
 git config --global commit.template ~/.gitmessage
 ```
-
----
-
-Would you like me to generate a sample WIP commit for a specific Angular module or use case you’re working on?

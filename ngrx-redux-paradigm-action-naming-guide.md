@@ -1,21 +1,17 @@
-Yes! The style you're using —  
 ```ts
-[Campaigns Page] Set Campaign
-```  
-— is **excellent** and aligns well with **NgRx + Redux best practices**. You're on the right track as a senior Angular dev. Below is a refined **step-by-step naming guide**, tailored to your current approach with explanations, edge cases, and extra tips to keep it clean and scalable.
-
----
 
 ## ✅ Naming Actions in NgRx – Step-by-Step (Senior-Level)
 
 ### **1. Follow the `[Source] Event` Pattern**
 
 ✅ You're already doing this with:
-```ts
+
 [Campaigns Page] Set Campaign
+
 ```
 
 #### ✅ Why it’s good:
+
 - `[Source]` indicates where the action originates (component, effect, API, etc.)
 - `Event` describes **what happened**, not what you want to happen
 - Super helpful in debugging, especially when looking at logs or NgRx DevTools
@@ -26,22 +22,26 @@ Yes! The style you're using —
 
 Some common and helpful sources:
 
-| Source           | When to Use |
-|------------------|-------------|
+| Source           | When to Use                                         |
+| ---------------- | --------------------------------------------------- |
 | `[Feature Page]` | UI-triggered actions (e.g., user clicks, page init) |
-| `[API]`          | Effects or backend-triggered actions |
-| `[Service]`      | Programmatic app-wide triggers |
-| `[Effect]`       | (Optional) For internal orchestration clarity |
+| `[API]`          | Effects or backend-triggered actions                |
+| `[Service]`      | Programmatic app-wide triggers                      |
+| `[Effect]`       | (Optional) For internal orchestration clarity       |
 
 #### ✅ Example:
 
 ```ts
 // From UI
-export const setCampaign = createAction('[Campaigns Page] Set Campaign');
+export const setCampaign = createAction("[Campaigns Page] Set Campaign");
 
 // API response
-export const setCampaignSuccess = createAction('[Campaigns API] Set Campaign Success');
-export const setCampaignFailure = createAction('[Campaigns API] Set Campaign Failure');
+export const setCampaignSuccess = createAction(
+  "[Campaigns API] Set Campaign Success"
+);
+export const setCampaignFailure = createAction(
+  "[Campaigns API] Set Campaign Failure"
+);
 ```
 
 ---
@@ -50,12 +50,12 @@ export const setCampaignFailure = createAction('[Campaigns API] Set Campaign Fai
 
 This helps clarify what has occurred.
 
-| Action | Example |
-|--------|---------|
-| Start / Trigger | `[Page] Load Campaigns` |
-| Completed | `[API] Load Campaigns Success` |
-| Failed | `[API] Load Campaigns Failure` |
-| Sync | `[Page] Set Campaign` |
+| Action          | Example                        |
+| --------------- | ------------------------------ |
+| Start / Trigger | `[Page] Load Campaigns`        |
+| Completed       | `[API] Load Campaigns Success` |
+| Failed          | `[API] Load Campaigns Failure` |
+| Sync            | `[Page] Set Campaign`          |
 
 So in your example, `"Set"` is fine for sync/update-type operations from the UI.
 
@@ -67,7 +67,7 @@ Keep actions strongly typed for better tooling and maintainability.
 
 ```ts
 export const setCampaign = createAction(
-  '[Campaigns Page] Set Campaign',
+  "[Campaigns Page] Set Campaign",
   props<{ campaign: Campaign }>()
 );
 ```
@@ -79,11 +79,13 @@ export const setCampaign = createAction(
 Each action should represent a **single, atomic event**.
 
 🚫 Avoid:
+
 ```ts
 [Campaigns Page] Load And Select Campaign
 ```
 
 ✅ Prefer:
+
 ```ts
 [Campaigns Page] Load Campaigns
 [Campaigns Page] Select Campaign
@@ -96,13 +98,13 @@ Each action should represent a **single, atomic event**.
 For async operations (like API calls), use a 3-action pattern:
 
 ```ts
-export const loadCampaigns = createAction('[Campaigns Page] Load Campaigns');
+export const loadCampaigns = createAction("[Campaigns Page] Load Campaigns");
 export const loadCampaignsSuccess = createAction(
-  '[Campaigns API] Load Campaigns Success',
+  "[Campaigns API] Load Campaigns Success",
   props<{ campaigns: Campaign[] }>()
 );
 export const loadCampaignsFailure = createAction(
-  '[Campaigns API] Load Campaigns Failure',
+  "[Campaigns API] Load Campaigns Failure",
   props<{ error: any }>()
 );
 ```
@@ -118,6 +120,7 @@ If some actions are purely internal and should not be triggered by components, y
 ```
 
 Or:
+
 ```ts
 [Campaigns Internal] Do Something
 ```
@@ -128,25 +131,25 @@ Helps with debugging and architecture.
 
 ## 🧠 Summary: You're Doing Great!
 
-| Rule | You're Following It? |
-|------|----------------------|
-| ✅ `[Source] Event` format | ✔️ `[Campaigns Page] Set Campaign` is perfect |
-| ✅ Verb clarity | ✔️ "Set" is appropriate for local state sync |
-| ✅ File per feature | (Assumed) ✔️ |
-| ✅ Strong typing with `props` | ✔️ |
-| ✅ Async patterns when needed | ✔️ if using them |
+| Rule                          | You're Following It?                          |
+| ----------------------------- | --------------------------------------------- |
+| ✅ `[Source] Event` format    | ✔️ `[Campaigns Page] Set Campaign` is perfect |
+| ✅ Verb clarity               | ✔️ "Set" is appropriate for local state sync  |
+| ✅ File per feature           | (Assumed) ✔️                                  |
+| ✅ Strong typing with `props` | ✔️                                            |
+| ✅ Async patterns when needed | ✔️ if using them                              |
 
 ---
 
 ### 🚀 Want Me to Help Further?
 
 I can:
+
 - Review or generate all actions for a feature (e.g., `Campaigns`, `Users`)
 - Create reusable templates or generators for consistent actions
 - Help you build a scalable action architecture across a large app
 
 Just say the word.
-
 
 Awesome — setting up a **scalable action architecture** in a large Angular + NgRx app is crucial for maintainability, collaboration, and debugging. Here's a full blueprint that scales with team size and app complexity.
 
@@ -155,6 +158,7 @@ Awesome — setting up a **scalable action architecture** in a large Angular + N
 ## 🚧 The Problem with Unstructured Actions
 
 In large apps:
+
 - Actions get messy across features
 - Naming becomes inconsistent
 - It's hard to debug and search
@@ -198,11 +202,13 @@ src/
 ```
 
 **Sources:**
+
 - `[Feature Page]` – UI-driven
 - `[Feature API]` – Effect/HTTP-driven
 - `[Feature Guard]`, `[Feature Resolver]`, `[Feature Effect]`, `[Feature Internal]` – optional granularity
 
 **Events:**
+
 - Use clear verbs: `Load`, `Set`, `Select`, `Reset`, `Update`, `Add`, `Delete`, etc.
 - For async: `Action`, `Action Success`, `Action Failure`
 
@@ -211,18 +217,18 @@ src/
 ```ts
 // campaigns.actions.ts
 
-export const loadCampaigns = createAction('[Campaigns Page] Load Campaigns');
+export const loadCampaigns = createAction("[Campaigns Page] Load Campaigns");
 export const loadCampaignsSuccess = createAction(
-  '[Campaigns API] Load Campaigns Success',
+  "[Campaigns API] Load Campaigns Success",
   props<{ campaigns: Campaign[] }>()
 );
 export const loadCampaignsFailure = createAction(
-  '[Campaigns API] Load Campaigns Failure',
+  "[Campaigns API] Load Campaigns Failure",
   props<{ error: any }>()
 );
 
 export const selectCampaign = createAction(
-  '[Campaigns Page] Select Campaign',
+  "[Campaigns Page] Select Campaign",
   props<{ id: string }>()
 );
 ```
@@ -249,12 +255,13 @@ export const deselectCampaign = ...
 ### **4. Avoid Action Duplication**
 
 Use shared actions when:
+
 - Multiple features rely on the same API
 - App-wide events like `[App] Init` or `[Router] Navigated`
 
 ```ts
 // app.actions.ts
-export const appInit = createAction('[App] Init');
+export const appInit = createAction("[App] Init");
 ```
 
 ---
@@ -262,6 +269,7 @@ export const appInit = createAction('[App] Init');
 ### **5. Centralize Global Events (Optional)**
 
 For shared or cross-cutting concerns like:
+
 - Auth
 - Layout (sidebar toggle)
 - Router
@@ -300,19 +308,20 @@ For large apps, `createFeature()` (from NgRx v15+) helps modularize reducers, se
 
 ## 🧪 Pro Tips
 
-| Tip | Why It Helps |
-|-----|--------------|
-| ✅ Prefix feature name in file name | Prevents import collisions |
-| ✅ Use `+state` folders | Angular’s new structured convention |
-| ✅ Document actions | Makes onboarding easier |
-| ✅ Use barrels (`index.ts`) | Clean imports |
-| ✅ Audit actions regularly | Remove unused actions |
+| Tip                                 | Why It Helps                        |
+| ----------------------------------- | ----------------------------------- |
+| ✅ Prefix feature name in file name | Prevents import collisions          |
+| ✅ Use `+state` folders             | Angular’s new structured convention |
+| ✅ Document actions                 | Makes onboarding easier             |
+| ✅ Use barrels (`index.ts`)         | Clean imports                       |
+| ✅ Audit actions regularly          | Remove unused actions               |
 
 ---
 
 ## 🔧 Want a Starter Template?
 
 I can generate a full **starter structure** with:
+
 - Feature actions
 - Effects
 - Reducers

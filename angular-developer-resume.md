@@ -1,7 +1,3 @@
-Great! Based on your impressive background, here are **3 tailored resume samples** for an **Intermediate Angular Developer** — each with a slightly different emphasis to suit varying job focuses: **Technical Specialist**, **UI/UX-Oriented**, and **Full-Stack Friendly**.
-
----
-
 ## 📄 **Resume Sample 1: Angular Frontend Specialist**
 
 **Name**: Alex Devbridge  
@@ -187,5 +183,3 @@ Tech University | 2015 – 2019
 - Communication and async team collaboration
 
 ---
-
-Would you like **editable Word/Markdown files** or a **custom version optimized for LinkedIn, GitHub, or PDF export**?
