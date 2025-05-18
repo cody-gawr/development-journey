@@ -350,3 +350,80 @@ Here’s a **natural and technically clear narration script** to help you explai
 > Thanks for watching!”
 
 ---
+
+### 🎙️ **Narration Script – Soundblock Project UI (Vue 3 + Laravel + Modular Architecture)**
+
+---
+
+### 🧩 **Overview**
+
+This screen represents a **detailed view of a single project** in the Soundblock platform. It's built using **Vue 3 with `<script setup>` syntax**, **TypeScript**, and follows a **modular UI architecture** with reusable components and strict separation of concerns.
+
+The layout is powered by a custom `AppLayout` wrapper, and the content is organized using `MainContainer`, our standardized wrapper for consistent spacing and responsiveness across pages.
+
+---
+
+### 📌 **Key Features**
+
+This view handles three core areas related to a selected project:
+
+1. **Project Details Header** – includes breadcrumbs, billable status, and quick edit actions
+2. **Task Management** – a tabbed interface to switch between active and completed tasks
+3. **Project Members** – displays team members involved in the project with add/remove functionality
+
+---
+
+### 🧠 **Architecture & Logic**
+
+On the logic side, we leverage **Pinia for state management**. For example:
+
+- `useProjectsStore()` gives us access to project details
+- `useTasksStore()` handles task-related logic and is triggered via `onMounted()` to load tasks
+- `useProjectMembersStore()` is injected only when permissions allow, keeping things secure and efficient
+
+All business rules, such as whether the current user can create tasks or view members, are handled using a centralized permissions utility — `canCreateTasks`, `canViewProjectMembers`, etc.
+
+---
+
+### 🧰 **Component Composition**
+
+We use a **slot-based design system**. For instance:
+
+- `CardTitle` takes a slot called `#actions` to inject context-specific buttons
+- `TaskTable` and `ProjectMemberTable` receive filtered data as props
+- Modal components like `TaskCreateModal` and `ProjectEditModal` are lazy-loaded and controlled via `ref()` bindings like `createTask` or `showEditProjectModal`
+
+Everything is highly reusable and scoped — making it easy to maintain or scale.
+
+---
+
+### 🎨 **UX & UI Highlights**
+
+- **Iconography** is provided by Heroicons (via the `@heroicons/vue/solid` package)
+- **Badge indicators** show billable status and default billing rates
+- **Dynamic styling** like project color indicators are applied with inline styles to create a polished, intuitive experience
+
+For file uploads and notifications, this view connects with background Laravel workers — for instance, when tasks are assigned or completed, real-time updates are reflected thanks to tight frontend-backend integration.
+
+---
+
+### ⚙️ **Backend Integration**
+
+On the Laravel side, this view interacts with endpoints backed by Eloquent models, service layers, and policy-driven access control. The `CategoriesController`, for example, powers many of the logic pieces that feed into this UI — such as fetching available product attributes or slider images for S3-hosted banners.
+
+---
+
+### ✅ **Summary**
+
+This project view in Soundblock demonstrates how we’ve built a **modular, scalable frontend** that cleanly integrates with a service-oriented **Laravel backend**.
+
+It showcases:
+
+- Clean separation of logic and UI
+- Vue 3 + Pinia for responsive, reactive state
+- Laravel-powered backend services and queues
+- Real-time updates with user-friendly UX
+
+This kind of structure makes the platform both **developer-friendly** and **user-focused**, which was a key goal in Soundblock’s design.
+
+---
