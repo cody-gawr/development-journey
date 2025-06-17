@@ -17,5 +17,13 @@ Below are 15 behavioral interview sentences that start with _Let me walk you thr
 6. Sure, let me walk you through my thinking when I volunteered to mentor junior developers who was new to Angular.
 7. Sure, let me walk you through my thinking when I proposed using Laravel Queues to improve performance.
 8. Sure, let me walk you through my thinking when I took initiative to improve our CI/CD pipeline.
-9. lead
-10. coding standards
+9. Sure, let me walk you through my thinking during the time I led a sprint planning session.
+10. Sure, let me walk you through my thinking when I introduced coding standards to improve code quality across our team.
+
+## 11-15 Collaboration/Conflict/Growth
+
+11. Sure, let me walk you through my thinking when a teammate and I disagreed on how to implement a feature.
+12. priority
+13. code review
+14. learn a new library
+15. transition
