@@ -23,7 +23,7 @@ Below are 15 behavioral interview sentences that start with _Let me walk you thr
 ## 11-15 Collaboration/Conflict/Growth
 
 11. Sure, let me walk you through my thinking when a teammate and I disagreed on how to implement a feature.
-12. priority
+12. Sure, let me walk you through my thinking when I worked with a designer who had a very differen priority.
 13. code review
-14. learn a new library
+14. learn a new library Sure, let me walk you through my thinking when I boosted up the project development by learning a new library to stop progress.
 15. transition
